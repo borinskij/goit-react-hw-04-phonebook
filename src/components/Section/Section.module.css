@@ -1,0 +1,13 @@
+.section {
+  font-size: 18px;
+
+  padding: 30px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+button {
+  margin: 10px;
+}
