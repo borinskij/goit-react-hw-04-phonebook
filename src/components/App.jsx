@@ -27,6 +27,8 @@ export class App extends Component {
 
   hendlerChange = event => {
     const { value, name } = event.target;
+    console.log('name :', name);
+    console.log('value :', value);
     this.setState({ [name]: value });
   };
   hendelSubmit = (name, number) => {
@@ -36,7 +38,10 @@ export class App extends Component {
     }
     this.setState(prevState => {
       return {
-        contacts: [...prevState.contacts, { id: id, name: name, number: number }],
+        contacts: [
+          ...prevState.contacts,
+          { id: id, name: name, number: number },
+        ],
       };
     });
   };
@@ -63,13 +68,82 @@ export class App extends Component {
           />
         </Section>
         <Section title={'Filter'}>
-          <Filter stateFilter={this.state.filter} hendlerChange={this.hendlerChange} />
+          <Filter
+            stateFilter={this.state.filter}
+            hendlerChange={this.hendlerChange}
+          />
         </Section>
 
         <Section title={'Contacts'}>
-          <Contacts contacts={this.filterMap()} hendelDelete={this.hendelDelete} />
+          <Contacts
+            contacts={this.filterMap()}
+            hendelDelete={this.hendelDelete}
+          />
         </Section>
       </>
     );
   }
 }
+
+// export const  App = () => {
+// const [contacts, setContacts] = useState ([]);
+// const [filter, setFilter] = useState('')
+
+//
+// const locaStorageData = JSON.parse(localStorage.getItem(LOCAL_KEY));
+//
+// setContacts(locaStorageData );
+//
+//
+
+//  useEffect(()=> {
+//  setContacts( localStorage.setItem(LOCAL_KEY, JSON.stringify(contacts));
+// }, [contacts])
+
+// const hendlerChange = event => {
+// setFilter(value.event.target);
+// };
+
+//++++++++++++++ hendelSubmit = (name, number) => {
+//   const id = nanoid();
+//   if (contacts.some(name)) {
+//     return alert(`${name} is already in contacts`);
+//   }
+//   setContacts(prevContacts => [
+//     ...prevContacts,
+//     { id, name, number },
+//   ]);
+// };
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!useEffect(()=>(setContacts(contacts.filter(item => item.id !== id))),[id])
+//hendelDelete = id => {
+//   this.setState(prevState => {
+//     return { contacts: prevState.contacts.filter(item => item.id !== id) };
+//   });
+// };
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// filterMap = () => {
+//   let filterContact = this.state.contacts.filter(element =>
+//     element.name.toLowerCase().includes(this.state.filter.toLowerCase())
+//   );
+//   return filterContact;
+// };
+
+//   return (
+//   <>
+//     <Section title={'Phonebook'}>
+//       <Form
+
+//         hendelSubmit={this.hendelSubmit}
+//       />
+//     </Section>
+//     <Section title={'Filter'}>
+//       <Filter stateFilter={this.state.filter} hendlerChange={this.hendlerChange} />
+//     </Section>
+
+//     <Section title={'Contacts'}>
+//       <Contacts contacts={this.filterMap()} hendelDelete={this.hendelDelete} />
+//     </Section>
+//   </>
+// )
+// }
