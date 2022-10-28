@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const Filter = ({ hendlerChange, stateFilter }) => {
+export const Filter = ({ stateFilter, hendlerChange }) => {
   return (
     <input
       onChange={hendlerChange}
